@@ -1,3 +1,6 @@
 init_db.py → creates DB + tables (one time)
 app.py → only handles login, dashboard, logic
 db.py → only handles DB connection
+flask
+gunicorn
+werkzeug
