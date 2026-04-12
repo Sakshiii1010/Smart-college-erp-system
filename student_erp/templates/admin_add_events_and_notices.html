@@ -1,0 +1,51 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+
+<style>
+.form-box {
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+}
+</style>
+
+<div class="form-box">
+
+    <h2>Add Event / Notice</h2>
+
+    <form method="POST">
+        <input type="text" name="title" placeholder="Title" required>
+        <textarea name="description" placeholder="Description" required></textarea>
+
+        <select name="type">
+            <option value="event">Event</option>
+            <option value="notice">Notice</option>
+        </select>
+
+        <input type="date" name="date" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+{% endblock %}

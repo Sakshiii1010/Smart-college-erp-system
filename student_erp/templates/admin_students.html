@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Students</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background: #34495e;
+        }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+            background: #ecf0f1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete {
+            background: #e74c3c;
+        }
+
+        .edit {
+            background: green;
+        }
+
+        .add {
+            background: #2ecc71;
+        }
+
+        .search-btn {
+            background: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>Admin</h2>
+
+    <a href="/admin/dashboard">🏠 Dashboard</a>
+    <a href="/admin/students">👨‍🎓 Students</a>
+    <a href="/admin/faculty">👩‍🏫 Faculty</a>
+    <a href="/admin/notifications">🔔 Notifications</a>
+    <a href="#">⚠️ Grievances</a>
+    <a href="/">🚪 Logout</a>
+</div>
+
+<div class="main">
+
+    <h1>Manage Students</h1>
+
+    <!-- 🔥 TOP BUTTONS -->
+    <div style="display:flex; gap:10px; margin-bottom:15px;">
+        <a href="/admin/add_student" class="btn add">➕ Add Student</a>
+        <button onclick="toggleSearch()" class="btn search-btn">🔍 Search</button>
+    </div>
+
+    <!-- 🔥 SEARCH BOX -->
+    <div id="searchBox" style="display:none; margin-bottom:15px;">
+        <form method="GET" action="/admin/students">
+            <input type="text" name="search"
+                   placeholder="Search by name or enrollment"
+                   value="{{ search }}"
+                   style="padding:8px; width:250px;">
+
+            <button type="submit" style="padding:8px;">Go</button>
+        </form>
+    </div>
+
+    <!-- TABLE -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Enrollment</th>
+            <th>Course</th>
+            <th>Semester</th>
+            <th>Year</th>
+            <th>Action</th>
+        </tr>
+
+        {% if students|length == 0 %}
+        <tr>
+            <td colspan="7">No students found</td>
+        </tr>
+        {% endif %}
+
+        {% for s in students %}
+        <tr>
+            <td>{{ s['id'] }}</td>
+            <td>{{ s['name'] }}</td>
+            <td>{{ s['enrollment'] }}</td>
+            <td>{{ s['course'] if s['course'] else 'N/A' }}</td>
+            <td>{{ s['semester'] if s['semester'] else 'N/A' }}</td>
+            <td>{{ s['year'] if s['year'] else 'N/A' }}</td>
+
+            <td>
+                <a href="/admin/delete_student/{{ s['id'] }}"
+                   class="btn delete"
+                   onclick="return confirm('Delete this student?');">
+                   Delete
+                </a>
+
+                <a href="/admin/edit_student/{{ s['id'] }}" class="btn edit">
+                    Edit
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+<!-- 🔥 JAVASCRIPT -->
+<script>
+function toggleSearch() {
+    var box = document.getElementById("searchBox");
+
+    if (box.style.display === "none") {
+        box.style.display = "block";
+    } else {
+        box.style.display = "none";
+    }
+}
+
+// Auto open search if value exists
+window.onload = function() {
+    var searchValue = "{{ search }}";
+    if (searchValue !== "") {
+        document.getElementById("searchBox").style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>

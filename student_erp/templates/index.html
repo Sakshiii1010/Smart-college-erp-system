@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My College | Official Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing_style.css') }}">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">MY COLLEGE</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="{{ url_for('admissions') }}">Admissions</a>
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Welcome to My College</h1>
+    <p>Empowering Knowledge, Inspiring Innovation</p>
+    <br>
+    <a href="{{ url_for('admissions') }}" class="btn-primary">Apply for Admission</a>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="about">
+    <div class="about-box">
+        <h2>About College</h2>
+        <p>
+            My College is a premier institution dedicated to academic excellence,
+            innovation, and holistic student development.
+        </p>
+    </div>
+    <div class="about-box">
+        <h2>Mission</h2>
+        <p>
+            To provide industry-oriented education and foster research culture.
+        </p>
+    </div>
+    <div class="about-box">
+        <h2>Vision</h2>
+        <p>
+            To become a globally recognized educational institution.
+        </p>
+    </div>
+</section>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <a href="{{ url_for('admissions') }}">Admissions</a>
+    <a href="{{ url_for('events_and_notices') }}">Events & Notices</a>
+    <a href="{{ url_for('login') }}">Login</a>
+    <a href="#contact">Contact Us</a>
+    <a href="#help">Help</a>
+</aside>
+
+<!-- DEPARTMENTS -->
+<section class="departments">
+    <h2>Our Departments</h2>
+    <p class="dept-theory">
+        Our departments are designed to provide strong academic foundations
+        combined with hands-on practical exposure.
+    </p>
+
+    <div class="dept-cards">
+        <div class="card">
+            <h3>Computer Science</h3>
+            <p>
+                Programming, AI, Web Development, Data Structures,
+                and Software Engineering.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Mechanical Engineering</h3>
+            <p>
+                Design, Manufacturing, Thermal Engineering,
+                and Industrial Practices.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Electrical Engineering</h3>
+            <p>
+                Power Systems, Control Systems,
+                Renewable Energy and Electronics.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Civil Engineering</h3>
+            <p>
+                Structural Engineering, Construction Technology,
+                and Environmental Engineering.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- LOGIN -->
+<section id="login" class="login-section">
+    <h2>Login to Access Credentials</h2>
+    <p>
+        Access academic records, attendance, internal notices,
+        and faculty dashboards.
+    </p>
+    <br>
+    <a href="{{ url_for('login') }}" class="btn-primary">Login Here</a>
+</section>
+
+<!-- NEWS -->
+<section class="news">
+    <h2>News & Announcements</h2>
+    <div class="slider">
+        <p class="slide active">📢 Admissions Open for 2026</p>
+        <p class="slide">🎓 Annual Convocation on 15th March</p>
+        <p class="slide">🏆 Inter-College Tech Fest Coming Soon</p>
+    </div>
+</section>
+
+<!-- EVENTS GALLERY -->
+<section class="gallery">
+    <h2>College Events & Activities</h2>
+    <div class="gallery-slider">
+        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b" class="gslide active">
+        <img src="https://images.unsplash.com/photo-1515165562835-c1c1b7bdfc5b" class="gslide">
+        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df" class="gslide">
+    </div>
+</section>
+
+<!-- CONTACT US -->
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Address:</strong> My College, Knowledge Park, India</p>
+    <p><strong>Email:</strong> info@mycollege.edu</p>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+</section>
+
+<!-- HELP -->
+<section id="help" class="help">
+    <h2>Help & Support</h2>
+    <p>
+        • For login issues, contact the system administrator.<br>
+        • For admission queries, reach the admission office.<br>
+        • For academic concerns, contact your department coordinator.
+    </p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 My College. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

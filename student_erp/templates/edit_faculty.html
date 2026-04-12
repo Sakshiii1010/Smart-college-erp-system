@@ -1,0 +1,12 @@
+<h2>Edit Faculty</h2>
+
+<form method="POST">
+    <input type="text" name="name" value="{{ faculty['name'] }}" required><br>
+    <input type="text" name="faculty_id" value="{{ faculty['faculty_id'] }}" required><br>
+    <input type="text" name="department" value="{{ faculty['department'] }}" required><br>
+    <input type="text" name="designation" value="{{ faculty['designation'] }}" required><br>
+    <input type="email" name="email" value="{{ faculty['email'] }}" required><br>
+    <input type="text" name="phone" value="{{ faculty['phone'] }}" required><br>
+
+    <button type="submit">Update Faculty</button>
+</form>

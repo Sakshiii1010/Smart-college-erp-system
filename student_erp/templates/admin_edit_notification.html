@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Notification</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+
+<!-- Sidebar (same as dashboard) -->
+<div class="sidebar">
+    <h2>Admin</h2>
+    <ul>
+        <li><a href="/admin/dashboard">🏠 Dashboard</a></li>
+        <li><a href="/admin/students">🧑‍🎓 Students</a></li>
+        <li><a href="/admin/faculty">👩‍🏫 Faculty</a></li>
+        <li><a href="/admin/notifications">🔔 Notifications</a></li>
+        <li><a href="/logout">🚪 Logout</a></li>
+    </ul>
+</div>
+
+<!-- Main Content -->
+<div class="admin-form-container">
+
+    <div class="admin-form-box">
+
+        <h2>✏️ Edit Notification</h2>
+
+        <form method="POST">
+
+            <label>Title</label>
+            <input type="text" name="title" value="{{ notification['title'] }}" required>
+
+            <label>Message</label>
+            <textarea name="message" rows="4" required>{{ notification['message'] }}</textarea>
+
+            <label>Target</label>
+            <select name="target">
+                <option value="all" {% if notification['target']=='all' %}selected{% endif %}>All</option>
+                <option value="student" {% if notification['target']=='student' %}selected{% endif %}>Students</option>
+                <option value="faculty" {% if notification['target']=='faculty' %}selected{% endif %}>Faculty</option>
+            </select>
+
+            <button type="submit">Update Notification</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

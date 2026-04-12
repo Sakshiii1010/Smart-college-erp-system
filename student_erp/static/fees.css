@@ -1,0 +1,24 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #141e30, #243b55);
+    color: white;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.fee-wrapper {
+    text-align: center;
+}
+
+.fee-card {
+    background: white;
+    color: black;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    margin-top: 20px;
+}

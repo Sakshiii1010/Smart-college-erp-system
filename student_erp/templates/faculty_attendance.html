@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Attendance</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:8px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#007bff;
+    color:white;
+}
+
+button{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Attendance</h2>
+
+<table>
+
+<tr>
+<th>Course</th>
+<th>Semester</th>
+<th>Subject</th>
+<th>Action</th>
+</tr>
+
+{% for subject in subjects %}
+
+<tr>
+
+<td>{{ subject.course }}</td>
+<td>{{ subject.semester }}</td>
+<td>{{ subject.subject_name }}</td>
+
+<td>
+<a href="{{ url_for('take_attendance', subject_id=subject.id) }}">
+<button>Take Attendance</button>
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

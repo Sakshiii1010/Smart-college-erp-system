@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Subjects</title>
+</head>
+<body>
+
+<h2>All Student Subjects</h2>
+
+<h2>Admin — Manage Subjects</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Student ID</th>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for sub in subjects %}
+    <tr>
+        <td>{{ sub.id }}</td>
+        <td>{{ sub.student_id }}</td>
+        <td>{{ sub.subject_name }}</td>
+        <td>{{ sub.marks }}</td>
+        <td>
+            <a href="/admin/edit-subject/{{ sub.id }}">✏ Edit</a>
+            |
+            <a href="/admin/delete-subject/{{ sub.id }}" onclick="return confirm('Delete subject?')">🗑 Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

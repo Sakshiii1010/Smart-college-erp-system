@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Card</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .result-container {
+            width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .student-info p {
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .summary {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .buttons button:hover {
+            background-color: #218838;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 40%;
+            left: 25%;
+            font-size: 60px;
+            color: rgba(0,0,0,0.05);
+            transform: rotate(-30deg);
+            pointer-events: none;
+        }
+
+        @media print {
+            .buttons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="result-container">
+
+    <div class="watermark">OFFICIAL RESULT</div>
+
+    <h2>Student Result Card</h2>
+
+    <div class="student-info">
+        <p><strong>Name:</strong> {{ student.name }}</p>
+        <p><strong>Enrollment:</strong> {{ student.enrollment }}</p>
+        <p><strong>Course:</strong> {{ student.course }}</p>
+        <p><strong>Semester:</strong> {{ student.semester }}</p>
+        <p><strong>Academic Year:</strong> {{ student.academic_year }}</p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Subject Name</th>
+            <th>Internal Marks</th>
+            <th>Grade</th>
+            <th>Result</th>
+        </tr>
+
+        {% for sub in subjects %}
+        <tr>
+            <td>{{ sub.name }}</td>
+            <td>{{ sub.marks }}</td>
+            <td>{{ sub.grade }}</td>
+            <td>{{ sub.result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="summary">
+        <p>Average Marks: {{ average }}</p>
+        <p>Overall Result: {{ overall_result }}</p>
+        <p>Division: {{ division }}</p>
+    </div>
+
+    <div class="buttons">
+        <button onclick="window.print()">Print</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+    </div>
+
+</div>
+
+<script>
+    function downloadPDF() {
+        window.location.href = "{{ url_for('download_result_pdf') }}";
+    }
+</script>
+
+</body>
+</html>

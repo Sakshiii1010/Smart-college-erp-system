@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background: #003366;
+    color: white;
+}
+
+.header nav a {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+/* Hero */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding-top: 140px;
+}
+
+.btn-primary {
+    padding: 05px 25px;
+    background: #ff9800;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+/* About */
+.about {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+/* Public Sidebar */
+.sidebar {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    background: #003366;
+    padding: 10px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+/* Departments */
+.departments {
+    padding: 60px;
+    text-align: center;
+}
+
+.dept-theory {
+    margin: 20px auto 40px;
+    max-width: 800px;
+}
+
+.dept-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    width: 220px;
+    padding: 20px;
+    background: #a7f4e7;
+}
+
+/* Login Section */
+.login-section {
+    background: #bcd7f8;
+    text-align: center;
+    padding: 50px;
+}
+
+/* News */
+.news {
+    padding: 40px;
+    background: #e9bdbd;
+    text-align: center;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+/* Gallery */
+.gallery {
+    padding: 50px;
+    text-align: center;
+}
+
+.gallery-slider img {
+    width: 60%;
+    display: none;
+}
+
+.gallery-slider img.active {
+    display: block;
+    margin: auto;
+}
+
+/* Contact & Help */
+.contact, .help {
+    padding: 50px;
+    text-align: center;
+    background: #f4f6f8;
+}
+
+.contact p, .help p {
+    margin: 10px 0;
+}
+
+/* Footer */
+.footer {
+    background: #003366;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/*---------- ADMISSION SECTION-----------*/
+.admissions {
+    padding: 60px 20px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.admissions h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.admissions .intro {
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.admission-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 250px;
+    background: #f4f6f9;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.box h3 {
+    margin-bottom: 10px;
+}
+
+.apply-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Faculty Courses</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:8px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#007bff;
+    color:white;
+}
+
+button{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>My Subjects</h2>
+
+<table>
+
+<tr>
+<th>Course</th>
+<th>Semester</th>
+<th>Subject</th>
+<th>Action</th>
+</tr>
+
+{% for course in courses %}
+
+<tr>
+<td>{{ course.course }}</td>
+<td>{{ course.semester }}</td>
+<td>{{ course.subject_name }}</td>
+
+<td>
+<a href="{{ url_for('faculty_students', subject_id=course.id) }}">
+<button>View Students</button>
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

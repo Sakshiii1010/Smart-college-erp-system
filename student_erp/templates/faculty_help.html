@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Help & Support</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+}
+
+h2{
+    text-align:center;
+}
+
+/* FORM */
+form{
+    margin-top:20px;
+}
+
+select, textarea{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+button{
+    padding:10px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    margin-top:30px;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#007bff;
+    color:white;
+}
+
+/* FAQ */
+.faq{
+    background:#f9f9f9;
+    padding:15px;
+    margin-top:20px;
+    border-left:5px solid #28a745;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>❓ Help & Support</h2>
+
+<!-- FAQ -->
+<div class="faq">
+<b>FAQs:</b>
+<ul>
+<li>How to mark attendance? → Go to Attendance section</li>
+<li>How to view students? → Use Courses & Subjects</li>
+<li>Payment issue? → Contact admin</li>
+</ul>
+</div>
+
+<!-- FORM -->
+<h3>Raise Support Ticket</h3>
+
+<form method="POST">
+
+<select name="issue_type" required>
+<option value="">Select Issue Type</option>
+<option>Technical Issue</option>
+<option>Attendance Issue</option>
+<option>Payment Issue</option>
+<option>Other</option>
+</select>
+
+<textarea name="description" placeholder="Describe your issue..." required></textarea>
+
+<button type="submit">Submit Ticket</button>
+
+</form>
+
+<!-- TABLE -->
+<h3>My Requests</h3>
+
+<table>
+
+<tr>
+<th>Issue</th>
+<th>Description</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+
+{% for t in tickets %}
+
+<tr>
+<td>{{ t.issue_type }}</td>
+<td>{{ t.description }}</td>
+<td>{{ t.date }}</td>
+<td>{{ t.status }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<!-- CONTACT -->
+<h3>Contact</h3>
+<p>Email: admin@erp.com</p>
+<p>Phone: 9876543210</p>
+
+</div>
+
+</body>
+
+</html>

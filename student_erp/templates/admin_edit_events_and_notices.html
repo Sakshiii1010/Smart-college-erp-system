@@ -1,0 +1,26 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+
+<div class="form-box">
+
+    <h2>Edit Event / Notice</h2>
+
+    <form method="POST">
+        <input type="text" name="title" value="{{ item.title }}" required>
+
+        <textarea name="description">{{ item.description }}</textarea>
+
+        <select name="type">
+            <option value="event" {% if item.type == "event" %}selected{% endif %}>Event</option>
+            <option value="notice" {% if item.type == "notice" %}selected{% endif %}>Notice</option>
+        </select>
+
+        <input type="date" name="date" value="{{ item.date }}" required>
+
+        <button type="submit">Update</button>
+    </form>
+
+</div>
+
+{% endblock %}

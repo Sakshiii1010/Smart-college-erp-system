@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Department</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+}
+
+h2{
+    text-align:center;
+}
+
+/* SECTION */
+.section{
+    margin-top:25px;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#007bff;
+    color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🏢 Department Details</h2>
+
+<!-- BASIC INFO -->
+<div class="section">
+    <p><b>Department:</b> {{ faculty.department }}</p>
+    <p><b>Faculty Name:</b> {{ faculty.name }}</p>
+    <p><b>Designation:</b> {{ faculty.designation }}</p>
+</div>
+
+<hr>
+
+<!-- COURSES -->
+<div class="section">
+    <h3>📚 Courses Offered</h3>
+    <ul>
+        <li>B.Tech CSE</li>
+        <li>M.Tech CSE</li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- SUBJECTS -->
+<div class="section">
+    <h3>📖 Subjects</h3>
+
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Course</th>
+            <th>Semester</th>
+        </tr>
+
+        {% for sub in subjects %}
+        <tr>
+            <td>{{ sub.subject_name }}</td>
+            <td>{{ sub.course }}</td>
+            <td>{{ sub.semester }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+
+</div>
+
+</body>
+
+</html>

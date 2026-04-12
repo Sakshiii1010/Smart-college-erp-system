@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notices</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+}
+
+.notice{
+    border-left:5px solid #007bff;
+    padding:15px;
+    margin-bottom:15px;
+    background:#f9f9f9;
+}
+
+.notice h3{
+    margin:0;
+}
+
+.notice small{
+    color:gray;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📢 Notices</h2>
+
+{% for notice in notices %}
+
+<div class="notice">
+    <h3>{{ notice.title }}</h3>
+    <p>{{ notice.message }}</p>
+    <small>
+        {{ notice.date }} | Posted by: {{ notice.posted_by }}
+    </small>
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

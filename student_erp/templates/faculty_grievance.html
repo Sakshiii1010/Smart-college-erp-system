@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Grievance</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:8px;
+}
+
+input, textarea{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+}
+
+button{
+    margin-top:10px;
+    padding:8px 12px;
+    background:#007bff;
+    color:white;
+    border:none;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:25px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#007bff;
+    color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Submit Grievance</h2>
+
+<form method="POST">
+
+<label>Subject</label>
+<input type="text" name="subject" required>
+
+<label>Description</label>
+<textarea name="description" required></textarea>
+
+<label>Date</label>
+<input type="date" name="date" required>
+
+<button type="submit">Submit Grievance</button>
+
+</form>
+
+<hr>
+
+<h2>My Grievances</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Subject</th>
+<th>Description</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+
+{% for grievance in grievances %}
+
+<tr>
+
+<td>{{ grievance.id }}</td>
+<td>{{ grievance.subject }}</td>
+<td>{{ grievance.description }}</td>
+<td>{{ grievance.date }}</td>
+<td>{{ grievance.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

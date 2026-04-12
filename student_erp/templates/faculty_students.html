@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Students</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+table{
+    width:80%;
+    margin:auto;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#007bff;
+    color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2 style="text-align:center;">
+Students - {{ subject.subject_name }}
+</h2>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Enrollment</th>
+<th>Course</th>
+<th>Semester</th>
+</tr>
+
+{% for student in students %}
+
+<tr>
+<td>{{ student.name }}</td>
+<td>{{ student.enrollment }}</td>
+<td>{{ student.course }}</td>
+<td>{{ student.semester }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>

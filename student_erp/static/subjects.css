@@ -1,0 +1,53 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #345fb0, #3161b3);
+    margin: 0;
+    padding: 30px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    color: white;
+}
+
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.subject-card {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.attendance-bar {
+    background: #ddd;
+    height: 8px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.attendance-fill {
+    background: #4caf50;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #2e58a7;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}

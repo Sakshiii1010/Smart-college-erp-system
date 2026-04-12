@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            display: flex;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background: #34495e;
+        }
+
+        /* MAIN CONTENT */
+        .main {
+            flex: 1;
+            padding: 20px;
+            background: #ecf0f1;
+        }
+
+        /* CARDS */
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 200px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .card b {
+            font-size: 22px;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* BUTTONS */
+        .btn {
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .edit {
+            background: #3498db;
+            color: white;
+        }
+
+        .delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+
+    <a href="/admin/dashboard">🏠 Dashboard</a>
+    <a href="/admin/students">👨‍🎓 Students</a>
+    <a href="/admin/faculty">👩‍🏫 Faculty</a>
+    <a href="/admin/notifications">🔔 Notifications</a>
+    <a href="/admin/grievances">⚠️ Grievances</a>
+    <a href="/">🚪 Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <h1>Welcome, {{ admin['username'] }}! 👨‍💼</h1>
+
+    <!-- STATS -->
+    <h2>System Overview</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            👨‍🎓 Students <br>
+            <b>{{ total_students }}</b>
+        </div>
+
+        <div class="card">
+            👩‍🏫 Faculty <br>
+            <b>{{ total_faculty }}</b>
+        </div>
+
+        <div class="card">
+            🔔 Notifications <br>
+            <b>{{ total_notifications }}</b>
+        </div>
+
+        <div class="card">
+            ⚠️ Grievances <br>
+            <b>{{ total_grievances }}</b>
+        </div>
+
+    </div>
+
+    <!-- TABLE SECTION -->
+    <h2>Recent Students</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Enrollment</th>
+        </tr>
+
+        {% for s in recent_students %}
+        <tr>
+            <td>{{ s['name'] }}</td>
+            <td>{{ s['enrollment'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+
+<style>
+/* PAGE WRAPPER */
+.main-content {
+    padding: 35px;
+    display: flex;
+    justify-content: left;
+}
+
+/* CARD */
+.card {
+    width: 95%;
+    max-width: 900px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* HEADING */
+.card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+/* BUTTONS */
+.btn {
+    padding: 6px 8px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.view { background: green; }
+.delete { background: red; }
+
+/* STATUS */
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.Pending { background: orange; }
+.Resolved { background: green; }
+.Rejected { background: red; }
+
+</style>
+
+<div class="main-content">
+
+    <div class="card">
+        <h2>Grievance Management</h2>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+
+            {% for g in grievances %}
+            <tr>
+                <td>{{ g.id }}</td>
+                <td>{{ g.subject }}</td>
+
+                <td>
+                    <span class="status {{ g.status }}">
+                        {{ g.status }}
+                    </span>
+                </td>
+
+                <td>{{ g.created_at }}</td>
+
+                <td>
+                    <a href="/admin/grievance/{{ g.id }}" class="btn view">View</a>
+                    <a href="/admin/delete_grievance/{{ g.id }}" class="btn delete">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

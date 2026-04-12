@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Add Student{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<div class="main-content">
+
+    <form method="POST" class="form-box">
+
+        <h2>Add New Student</h2>
+
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Enrollment:</label>
+        <input type="text" name="enrollment" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <label>Course:</label>
+        <input type="text" name="course" required>
+
+        <label>Semester:</label>
+        <input type="text" name="semester" required>
+
+        <label>Year:</label>
+        <input type="text" name="year"
+               placeholder="2023-27"
+               pattern="\d{4}-\d{2}"
+               title="Format: 2023-27"
+               required>
+
+        <button type="submit">Save Student</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body class="student-dashboard">
+
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar">
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+    <!-- Profile Section -->
+
+    <a href="{{ url_for('edit_profile') }}" class="edit-btn">
+        Edit Profile
+    </a>
+ 
+    <div class="profile-box">
+        <div class="profile-text">
+            <h3>{{ student.name }}</h3>
+            <p>{{ student.enrollment }}</p>
+            <p>{{ student.course }} | Semester {{ student.semester }}</p>
+            <p>{{ student.academic_year }}</p>
+            <a href="{{ url_for('edit_profile') }}" class="edit-profile">
+            ✏️ Edit Profile
+        </a>
+        </div>
+
+    <!-- RIGHT SIDE PROFILE IMAGE -->
+        <div class="profile-image">
+            <img src="{{ url_for('static', filename='uploads/' + student.profile_pic) if student.profile_pic else url_for('static', filename='profile.png') }}"
+                alt="Profile"
+                class="profile-pic">
+        </div>
+
+    </div>
+
+
+    <hr>
+
+    <!-- Menu -->
+    <nav class="menu"><br>
+        <a href="#">🏠 Dashboard</a><br>
+        <a href="{{ url_for('academics') }}">📘 Academics</a><br>
+        <a href="{{ url_for('student_materials') }}">📝 Study Materials</a><br>
+        <a href="/student/fees">💰 Fees</a><br>
+        <a href="{{ url_for('student_results') }}">🏆Results</a><br>
+        <a href="{{ url_for('student_library') }}">📚 Library</a><br>
+        <a href="{{ url_for('student_grievance') }}">⚠️ Grievance</a><br>
+        <a href="{{ url_for('student_calendar') }}">📅 Calendar</a><br>
+        <a href="{{ url_for('student_notifications') }}">🔔 Notifications</a><br>
+        <a href="{{ url_for('student_help') }}">❓ Help</a><br>
+        <a href="{{ url_for('logout') }}" class="logout">🔐 Logout</a>
+    </nav>
+
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+    <center>
+    <h2>Welcome, {{ student.name }} 👋</h2>
+    <p>This is your student dashboard overview.</p>
+    </center>
+
+    <!-- Dashboard Cards -->
+    <div class="cards">
+
+        <div class="card">
+            <h3>Dashboard</h3>
+        </div>
+
+        <a href="{{ url_for('academics') }}" class="card-link">
+            <div class="card">
+                <h3>Academics</h3>
+            </div>
+        </a>
+
+        <a href="/student/subjects" class="card-link">
+            <div class="card">
+                <h3>Subjects</h3>
+            </div>
+        </a>
+
+        <a href="/student/fees" class="card-link">
+            <div class="card">
+                <h3>Fee Structure</h3>
+            </div>
+        </a>
+
+        <a href="{{ url_for('student_results') }}" class="card-link">
+            <div class="card">
+                <h3>Results</h3>
+            </div>
+        </a>
+
+        <a href="{{ url_for('student_grievance') }}" class="card-link">
+            <div class="card">
+                <h3>Grievance</h3>
+            </div>
+        </a>
+
+        <a href="{{ url_for('student_notifications') }}" class="card-link">
+            <div class="card">
+                <h3>Notifications ({{ unread_count }})</h3>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('student_uniform') }}" class="card-link">
+            <div class="card">
+                <h3>Apply for Uniform</h3>
+            </div>
+        </a>
+
+        <a href="/student/apply-id-card" class="card-link">
+            <div class="card">
+                <h3>Apply for ID Card</h3>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('certificates') }}" class="card-link">
+            <div class="card">
+                <h3>Certificates</h3>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('student_courses') }}" class="card-link">
+            <div class="card">
+                <h3>Additional Courses</h3>
+            </div>
+        </a>
+        
+        <a href="{{ url_for('student_help') }}" class="card-link">
+            <div class="card">
+                <h3>Help</h3>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<div class="notification-bar">
+    <div class="scroll-text">
+        🔔 Exam form submission open | 📢 Fee payment deadline 20 Feb |
+        🆕 New study material uploaded | 🎓 Internship applications live
+    </div>
+</div>
+
+
+</body>
+</html>

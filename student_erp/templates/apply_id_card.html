@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Apply for ID Card</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:20px;
+}
+
+.container{
+width:900px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+}
+
+button{
+padding:10px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+table{
+width:100%;
+margin-top:25px;
+border-collapse:collapse;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#007bff;
+color:white;
+}
+
+.Pending{color:orange;font-weight:bold;}
+.Approved{color:blue;font-weight:bold;}
+.Printed{color:green;font-weight:bold;}
+.Rejected{color:red;font-weight:bold;}
+
+img{
+border-radius:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>ID Card Application</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<label>Full Name</label>
+<input type="text" name="full_name" required>
+
+<label>Father's Name</label>
+<input type="text" name="father_name" required>
+
+<label>Date of Birth</label>
+<input type="date" name="dob" required>
+
+<label>Course</label>
+<input type="text" name="course" required>
+
+<label>Address</label>
+<textarea name="address" required></textarea>
+
+<label>Upload Photo</label>
+<input type="file" name="photo" accept="image/*" required>
+
+<button type="submit">Submit Application</button>
+
+</form>
+
+<h3>My Applications</h3>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Date</th>
+<th>Status</th>
+<th>Photo</th>
+</tr>
+
+{% for app in applications %}
+
+<tr>
+
+<td>{{ app.id }}</td>
+
+<td>{{ app.applied_date }}</td>
+
+<td class="{{ app.status }}">{{ app.status }}</td>
+
+<td>
+
+{% if app.photo %}
+<img src="{{ url_for('static', filename='uploads/id_photos/' + app.photo) }}" width="60">
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

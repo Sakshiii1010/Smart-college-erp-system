@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Library</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:20px;
+}
+
+.container{
+width:1000px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#007bff;
+color:white;
+}
+
+button{
+background:#28a745;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#218838;
+}
+
+.return-btn{
+background:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Library Books</h2>
+
+<table>
+
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Category</th>
+<th>Available Copies</th>
+<th>Action</th>
+</tr>
+
+{% for book in books %}
+
+<tr>
+
+<td>{{ book.book_title }}</td>
+<td>{{ book.author }}</td>
+<td>{{ book.category }}</td>
+<td>{{ book.available_copies }}</td>
+
+<td>
+
+{% if book.available_copies > 0 %}
+
+<a href="{{ url_for('borrow_book',book_id=book.id) }}">
+<button>Borrow</button>
+</a>
+
+{% else %}
+
+Not Available
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+<h2>My Borrowed Books</h2>
+
+<table>
+
+<tr>
+<th>Book</th>
+<th>Issue Date</th>
+<th>Due Date</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for book in borrowed_books %}
+
+<tr>
+
+<td>{{ book.book_title }}</td>
+<td>{{ book.issue_date }}</td>
+<td>{{ book.due_date }}</td>
+<td>{{ book.status }}</td>
+
+<td>
+
+{% if book.status == "Borrowed" %}
+
+<a href="{{ url_for('return_book',issue_id=book.id) }}">
+<button class="return-btn">Return</button>
+</a>
+
+{% else %}
+
+—
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

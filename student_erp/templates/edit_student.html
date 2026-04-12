@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<div class="main-content">
+
+    <form method="POST" class="form-box">
+
+        <h2>Edit Student</h2>
+
+        <label>Name:</label>
+        <input type="text" name="name" value="{{ student['name'] }}" required>
+
+        <label>Enrollment:</label>
+        <input type="text" name="enrollment" value="{{ student['enrollment'] }}" required>
+
+        <label>Branch:</label>
+        <input type="text" name="branch" value="{{ student['branch'] }}">
+
+        <label>Year:</label>
+        <input type="text" name="year"
+               value="{{ student['year'] }}"
+               placeholder="2023-27"
+               pattern="\d{4}-\d{2}"
+               title="Format: 2023-27"
+               required>
+
+        <button type="submit">Update</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

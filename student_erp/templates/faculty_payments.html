@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Payment Details</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:8px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#007bff;
+    color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Payment Details</h2>
+
+<table>
+
+<tr>
+<th>Month</th>
+<th>Basic Salary</th>
+<th>Allowances</th>
+<th>Deductions</th>
+<th>Net Salary</th>
+<th>Status</th>
+</tr>
+
+{% for payment in payments %}
+
+<tr>
+
+<td>{{ payment.month }}</td>
+<td>{{ payment.basic_salary }}</td>
+<td>{{ payment.allowances }}</td>
+<td>{{ payment.deductions }}</td>
+<td>{{ payment.net_salary }}</td>
+<td>{{ payment.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>

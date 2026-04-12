@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subjects</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='subjects.css') }}">
+</head>
+<body>
+
+<h1>📚 My Subjects</h1>
+
+<div class="subjects-container">
+
+    {% for sub in subjects %}
+    <div class="subject-card">
+
+        <h2>{{ sub.subject_name }}</h2>
+
+        <p><strong>👨‍🏫 Teacher:</strong> {{ sub.teacher_name }}</p>
+
+        <p><strong>📊 Attendance:</strong> {{ sub.attendance }}%</p>
+
+        <div class="attendance-bar">
+            <div class="attendance-fill"
+                 style="width: {{ sub.attendance }}%;"></div>
+        </div>
+
+        <p><strong>📝 Internal Marks:</strong> {{ sub.internal_marks }}/50</p>
+
+        {% if sub.syllabus_file %}
+            <a href="{{ url_for('static', filename='syllabus/' + sub.syllabus_file) }}" 
+                target="_blank" class="syllabus-btn">
+                📁 View Syllabus
+            </a>
+        {% endif %}
+        <br>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

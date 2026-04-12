@@ -1,0 +1,173 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+
+<style>
+    .wrapper {
+        padding: 30px;
+    }
+
+    .page-title {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        padding: 10px;
+        width: 250px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    .filter-buttons button {
+        padding: 8px 14px;
+        border: none;
+        border-radius: 6px;
+        margin-left: 10px;
+        cursor: pointer;
+        background: #dfe4ea;
+    }
+
+    .filter-buttons button.active {
+        background: #007bff;
+        color: white;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        position: relative;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-date {
+        font-size: 13px;
+        color: gray;
+        margin-bottom: 8px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card-desc {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        color: white;
+        text-transform: capitalize;
+    }
+
+    .event { background: #3498db; }
+    .notice { background: #e74c3c; }
+
+    .no-data {
+        text-align: center;
+        margin-top: 40px;
+        color: gray;
+    }
+</style>
+
+<div class="wrapper">
+
+    <div class="page-title">📢 Events & Notices</div>
+
+    <div class="top-bar">
+        <input type="text" id="search" class="search-box" placeholder="Search...">
+
+        <div class="filter-buttons">
+            <button onclick="filterData('all')" class="active">All</button>
+            <button onclick="filterData('event')">Events</button>
+            <button onclick="filterData('notice')">Notices</button>
+        </div>
+    </div>
+
+    {% if data|length == 0 %}
+        <div class="no-data">No Events or Notices Available</div>
+    {% else %}
+
+    <div class="card-grid" id="cardContainer">
+
+        {% for item in data %}
+        <div class="card" data-type="{{ item.type }}">
+
+            <div class="card-date">{{ item.date }}</div>
+
+            <div class="card-title">{{ item.title }}</div>
+
+            <div class="card-desc">{{ item.description }}</div>
+
+            <span class="badge {{ item.type }}">
+                {{ item.type }}
+            </span>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<script>
+    function filterData(type) {
+        let cards = document.querySelectorAll(".card");
+        let buttons = document.querySelectorAll(".filter-buttons button");
+
+        buttons.forEach(btn => btn.classList.remove("active"));
+        event.target.classList.add("active");
+
+        cards.forEach(card => {
+            if (type === "all" || card.dataset.type === type) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+
+    document.getElementById("search").addEventListener("keyup", function() {
+        let value = this.value.toLowerCase();
+        let cards = document.querySelectorAll(".card");
+
+        cards.forEach(card => {
+            let text = card.innerText.toLowerCase();
+            card.style.display = text.includes(value) ? "block" : "none";
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply for Uniform</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        .container {
+            width: 850px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        .Pending { color: orange; font-weight: bold; }
+        .Approved { color: blue; font-weight: bold; }
+        .Ready { color: green; font-weight: bold; }
+        .Rejected { color: red; font-weight: bold; }
+        .Cancelled { color: gray; font-weight: bold; }
+
+        .cancel-btn {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Apply for Uniform</h2>
+
+    <h3>New Application</h3>
+
+    <form method="POST">
+        <label>Size</label>
+        <select name="size" required>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" name="quantity" min="1" required>
+
+        <label>Gender</label>
+        <select name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label>Remarks</label>
+        <textarea name="remarks" rows="3"></textarea>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    <h3>My Applications</h3>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Size</th>
+            <th>Qty</th>
+            <th>Gender</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for app in applications %}
+        <tr>
+            <td>{{ app.id }}</td>
+            <td>{{ app.size }}</td>
+            <td>{{ app.quantity }}</td>
+            <td>{{ app.gender }}</td>
+            <td>{{ app.created_at }}</td>
+            <td class="{{ app.status }}">{{ app.status }}</td>
+            <td>
+                {% if app.status == "Pending" %}
+                    <a href="{{ url_for('cancel_uniform', app_id=app.id) }}">
+                        <button class="cancel-btn">Cancel</button>
+                    </a>
+                {% else %}
+                    —
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Subject</title>
+    <style>
+        body{
+            font-family: Arial;
+            background:#82a6d6;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .box{
+            background:white;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 0 15px rgba(0,0,0,0.15);
+            width:300px;
+        }
+
+        input,button{
+            width:100%;
+            padding:10px;
+            margin-top:10px;
+            border-radius:8px;
+            border:1px solid #ccc;
+        }
+
+        button{
+            background:#007bff;
+            color:white;
+            border:none;
+            font-weight:bold;
+        }
+
+        button:hover{
+            background:#5f95ce;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+<h2>Add Subject</h2>
+
+<form method="POST">
+<input type="text" name="name" placeholder="Subject Name" required>
+<input type="text" name="code" placeholder="Subject Code" required>
+<input type="number" name="semester" placeholder="Semester" required>
+<button type="submit">Add Subject</button>
+</form>
+
+</div>
+
+</body>
+</html>

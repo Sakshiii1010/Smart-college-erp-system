@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Additional Courses</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:20px;
+}
+
+.container{
+width:900px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+margin-top:10px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#007bff;
+color:white;
+}
+
+button{
+background:#28a745;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#218838;
+}
+
+.cancel-btn{
+background:red;
+}
+
+.cancel-btn:hover{
+background:#c82333;
+}
+
+.download-btn{
+background:#17a2b8;
+}
+
+.download-btn:hover{
+background:#138496;
+}
+
+.section{
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= AVAILABLE COURSES ================= -->
+
+<h2>Available Additional Courses</h2>
+
+<table>
+<tr>
+<th>Course</th>
+<th>Instructor</th>
+<th>Duration</th>
+<th>Description</th>
+<th>Action</th>
+</tr>
+
+{% for course in courses %}
+
+<tr>
+<td>{{ course.course_name }}</td>
+<td>{{ course.instructor }}</td>
+<td>{{ course.duration }}</td>
+<td>{{ course.description }}</td>
+
+<td>
+<a href="{{ url_for('enroll_course', course_id=course.id) }}">
+<button>Enroll</button>
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+<!-- ================= ENROLLED COURSES ================= -->
+
+<div class="section">
+
+<h2>My Enrolled Courses</h2>
+
+<table>
+
+<tr>
+<th>Course</th>
+<th>Instructor</th>
+<th>Duration</th>
+<th>Status</th>
+<th>Cancel</th>
+<th>Certificate</th>
+</tr>
+
+{% for course in enrolled_courses %}
+
+<tr>
+
+<td>{{ course.course_name }}</td>
+<td>{{ course.instructor }}</td>
+<td>{{ course.duration }}</td>
+<td>{{ course.status }}</td>
+
+<td>
+
+{% if course.status == "Enrolled" %}
+
+<a href="{{ url_for('cancel_course', course_id=course.id) }}">
+<button class="cancel-btn">Cancel</button>
+</a>
+
+{% else %}
+
+—
+
+{% endif %}
+
+</td>
+
+<td>
+
+{% if course.status == "Completed" %}
+
+<a href="{{ url_for('download_course_certificate', course_id=course.id) }}">
+<button class="download-btn">Download</button>
+</a>
+
+{% else %}
+
+Not Available
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

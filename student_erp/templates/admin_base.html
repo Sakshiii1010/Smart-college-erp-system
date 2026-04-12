@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+    /* RESET (VERY IMPORTANT) */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial;
+    }
+
+    .container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .sidebar {
+        width: 220px;
+        background: #2f3542;
+        color: white;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 20px 15px;   /* reduced + controlled */
+    }
+
+    .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;  /* controlled spacing */
+    }
+
+    .sidebar a {
+        display: block;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        margin-top: 10px;
+    }
+
+    .sidebar a:hover {
+        background: #57606f;
+    }
+
+    .main-content {
+        margin-left: 220px;
+        padding: 20px;
+        min-height: 100vh;
+        width: calc(100% - 220px);
+        background: #f1f2f6;
+    }
+
+    /* 🔥 THIS FIXES YOUR TOP GAP */
+    h1, h2, h3 {
+        margin: 0;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/grievances">Grievances</a>
+        <a href="/admin/notifications">Notifications</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</div>
+
+</body>
+</html>

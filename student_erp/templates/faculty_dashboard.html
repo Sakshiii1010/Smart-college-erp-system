@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Faculty Dashboard</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f5f7fb;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:220px;
+height:100vh;
+background:#1e293b;
+color:white;
+position:fixed;
+padding-top:20px;
+}
+
+.sidebar h2{
+text-align:center;
+}
+
+.sidebar a{
+display:block;
+padding:12px 20px;
+color:white;
+text-decoration:none;
+}
+
+.sidebar a:hover{
+background:#334155;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* MAIN CONTENT */
+
+.main{
+margin-left:220px;
+padding:30px;
+}
+
+/* TOP SECTION */
+
+.top-section{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* FACULTY INFO CARD */
+
+.info-card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* PROFILE IMAGE */
+
+.profile-box{
+text-align:center;
+}
+
+.profile-box img{
+width:130px;
+height:130px;
+border-radius:50%;
+object-fit:cover;
+}
+
+/* ERP CARDS */
+
+.cards{
+margin-top:40px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+text-align:center;
+font-size:18px;
+font-weight:bold;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+background:#e2e8f0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2>Faculty ERP</h2>
+
+<a href="#">🏠 Dashboard</a>
+<a href="{{ url_for('faculty_profile') }}">👤 Profile</a>
+<a href="{{ url_for('faculty_department') }}">🏢 Department</a>
+<a href="{{ url_for('faculty_courses') }}">📚 Course & Subjects</a>
+<a href="{{ url_for('faculty_all_students') }}">👨‍🎓 Students</a>
+<a href="{{ url_for('faculty_payments') }}">💰 Payment Details</a>
+<a href="{{ url_for('faculty_contacts') }}">📞 Contacts</a>
+<a href="{{ url_for('faculty_attendance') }}">📝 Attendance</a>
+<a href="{{ url_for('faculty_notices') }}">🔔 Notices</a>
+<a href="{{ url_for('logout') }}">🚪 Logout</a>
+
+</div>
+
+
+<!-- MAIN AREA -->
+
+<div class="main">
+
+<!-- TOP SECTION -->
+
+<div class="top-section">
+
+<div>
+
+<h1>Welcome {{ faculty.name }}</h1>
+
+<div class="info-card">
+
+<p><b>Faculty ID:</b> {{ faculty.faculty_id }}</p>
+<p><b>Department:</b> {{ faculty.department }}</p>
+<p><b>Designation:</b> {{ faculty.designation }}</p>
+<p><b>Email:</b> {{ faculty.email }}</p>
+
+</div>
+
+</div>
+
+
+<div class="profile-box">
+
+<img src="{{ url_for('static', filename='images/faculty.jpg') }}">
+<p><b>{{ faculty.name }}</b></p>
+
+</div>
+
+</div>
+
+<!-- ERP CARDS -->
+
+<div class="cards">
+
+<a href="{{ url_for('faculty_courses') }}">
+    <div class="card">📚 Course & Subject</div>
+</a>
+<a href="{{ url_for('faculty_attendance') }}">
+    <div class="card">📝 Attendance</div>
+</a>
+<a href="{{ url_for('faculty_payments') }}">
+    <div class="card">💰 Payment Details</div>
+</a>
+<a href="{{ url_for('faculty_grievance') }}">
+    <div class="card">📢 Grievance</div>
+</a>
+<a href="{{ url_for('faculty_notices') }}">
+    <div class="card">🔔 Notices</div>
+</a>
+<a href="{{ url_for('faculty_help') }}">
+    <div class="card">❓ Help</div>
+</a>
+
+
+</div>
+
+</div>
+
+</body>
+</html>

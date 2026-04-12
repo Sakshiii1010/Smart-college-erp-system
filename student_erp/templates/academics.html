@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Academics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='academics.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top-header">
+        <div class="student-inline">
+            {{ student['name'] }} <br>
+            {{ student['course'] }} <br>
+            Semester {{ student['semester'] }}
+        </div>
+
+        <div class="page-title">
+            <h1>Academic Performance</h1>
+        </div>
+    </div>
+
+    <div class="summary">
+        <div class="gpa-box">
+            <h2>GPA</h2>
+            <p>{{ gpa }}</p>
+        </div>
+
+        <div class="status-box {{ status }}">
+            <h2>Status</h2>
+            <p>{{ status }}</p>
+        </div>
+    </div>
+
+    <div class="subjects-container">
+        {% for sub in subjects %}
+        <div class="subject-card">
+
+            <div class="card-header">
+                <h3>{{ sub.name }}</h3>
+
+                {% if sub.grade == "A+" %}
+                    <span class="grade grade-aplus">A+</span>
+                {% elif sub.grade == "A" %}
+                    <span class="grade grade-a">A</span>
+                {% elif sub.grade == "B" %}
+                    <span class="grade grade-b">B</span>
+                {% elif sub.grade == "C" %}
+                    <span class="grade grade-c">C</span>
+                {% else %}
+                    <span class="grade grade-f">F</span>
+                {% endif %}
+            </div>
+
+            <div class="marks">
+                {{ sub.marks }} / 100
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" data-width="{{ sub.marks }}"></div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Chart Section -->
+    <div class="chart-section">
+        <h2>Performance Overview</h2>
+        <canvas id="marksChart"></canvas>
+    </div>
+
+</div>
+
+<script>
+    document.querySelectorAll('.progress').forEach(function(bar) {
+        const width = bar.getAttribute('data-width');
+        bar.style.width = width + "%";
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const subjectNames = {{ subject_names | tojson }};
+    const subjectMarks = {{ subject_marks | tojson }};
+
+    const canvas = document.getElementById('marksChart');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: subjectNames,
+            datasets: [{
+                label: 'Marks',
+                data: subjectMarks,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

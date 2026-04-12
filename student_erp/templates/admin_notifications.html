@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notifications</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>Admin</h2>
+    <ul>
+        <li><a href="/admin/dashboard">🏠 Dashboard</a></li>
+        <li><a href="/admin/students">🧑‍🎓 Students</a></li>
+        <li><a href="/admin/faculty">👩‍🏫 Faculty</a></li>
+        <li><a href="/admin/notifications">🔔 Notifications</a></li>
+        <li><a href="/logout">🚪 Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+
+    <h1>Notifications</h1>
+
+    <div class="top-actions">
+        <a href="/admin/add_notification">
+            <button class="add-btn">➕ Add Notification</button>
+        </a>
+    </div>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Message</th>
+                <th>Target</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for n in notifications %}
+            <tr>
+                <td>{{ n['id'] }}</td>
+                <td>{{ n['title'] }}</td>
+                <td>{{ n['message'] }}</td>
+                <td>{{ n['target'] }}</td>
+                <td>{{ n['created_at'] }}</td>
+
+                <td class="action-buttons">
+                    <a href="/admin/edit_notification/{{ n['id'] }}" class="edit-btn">Edit</a>
+    
+                    <a href="/admin/delete_notification/{{ n['id'] }}" 
+                        class="delete-btn"
+                        onclick="return confirm('Delete this notification?')">
+                        Delete
+                    </a>
+                </td>
+               
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

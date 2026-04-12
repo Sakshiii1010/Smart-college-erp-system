@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.container {
+    width: 90%;
+    margin: 40px auto;
+    padding: 40px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.summary {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.gpa-box, .status-box {
+    background: white;
+    color: black;
+    padding: 20px 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.status-box.PASS {
+    border-left: 8px solid #2ecc71;
+}
+
+.status-box.FAIL {
+    border-left: 8px solid #e74c3c;
+}
+
+.subjects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.subject-card {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grade {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.grade.A\+ {
+    background-color: #2ecc71;
+}
+
+.grade.A {
+    background-color: #3498db;
+}
+
+.grade.B {
+    background-color: #f39c12;
+}
+
+.grade.C {
+    background-color: #f1c40f;
+}
+
+.grade.F {
+    background-color: #e74c3c;
+}
+
+.marks {
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    background: #ddd;
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    transition: width 1s ease-in-out;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.student-inline {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.page-title {
+    flex: 1;
+    text-align: center;
+}
+
+.page-title h1 {
+    margin: 0;
+}
+
+.chart-section {
+    margin-top: 40px;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    color: black;
+}
+
+.chart-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.chart-section canvas {
+    height: 350px !important;
+}

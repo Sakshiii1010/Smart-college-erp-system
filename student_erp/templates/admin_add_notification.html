@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Notification</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>Admin</h2>
+    <ul>
+        <li><a href="/admin/dashboard">🏠 Dashboard</a></li>
+        <li><a href="/admin/students">🧑‍🎓 Students</a></li>
+        <li><a href="/admin/faculty">👩‍🏫 Faculty</a></li>
+        <li><a href="/admin/notifications">🔔 Notifications</a></li>
+        <li><a href="/logout">🚪 Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="form-box">
+
+        <h2>Add Notification</h2>
+
+        <form method="POST">
+
+            <input type="text" name="title" placeholder="Title" required>
+
+            <textarea name="message" placeholder="Message" required></textarea><br>
+
+            <select name="target" required>
+                <option value="">Select Target</option>
+                <option value="students">Students</option>
+                <option value="faculty">Faculty</option>
+                <option value="all">All</option>
+            </select>
+        
+            <button type="submit">Send Notification</button><br>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

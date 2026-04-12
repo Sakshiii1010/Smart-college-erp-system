@@ -1,0 +1,744 @@
+body {
+background: rgb(205, 228, 248) !important;
+}
+
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+background: #f4f6f8;
+}
+
+/* ===== LOGIN PAGE ===== */
+.login-body {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background: #f1f5f9;
+}
+
+.login-box {
+background: #ffffff;
+padding: 35px;
+width: 320px;
+border-radius: 12px;
+box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.login-box h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.login-box input {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+border-radius: 6px;
+border: 1px solid #cbd5e1;
+font-size: 14px;
+}
+
+.login-box button {
+width: 100%;
+padding: 10px;
+background: #1e40af;
+color: white;
+border: none;
+border-radius: 6px;
+font-size: 15px;
+cursor: pointer;
+}
+
+.login-box button:hover {
+background: #1e3a8a;
+}
+
+/* Login Page */
+.login-body {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.login-box {
+background: white;
+padding: 30px;
+width: 320px;
+border-radius: 10px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.login-box h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.login-box input {
+width: 100%;
+padding: 10px;
+margin-bottom: 12px;
+}
+
+.login-box button {
+width: 100%;
+padding: 10px;
+background: #d5d9e9;
+color: white;
+border: none;
+cursor: pointer;
+}
+
+/* Student Sidebar */
+.sidebar {
+width: 250px;
+height: 100vh;
+position: fixed;
+background: #5981c1;
+color: white;
+padding: 20px;
+}
+
+.profile {
+text-align: center;
+margin-bottom: 30px;
+}
+
+.profile img {
+width: 80px;
+border-radius: 50%;
+margin-bottom: 10px;
+}
+
+.profile a {
+color: #38bdf8;
+text-decoration: none;
+font-size: 14px;
+}
+
+.sidebar ul {
+list-style: none;
+padding: 0;
+}
+
+.sidebar ul li {
+margin: 15px 0;
+cursor: pointer;
+}
+
+/* Dashboard Main Content */
+.main-content {
+margin-left: 270px;
+padding: 30px;
+}
+
+.cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 25px;
+padding: 20px;
+}
+
+.card {
+background: #f8f8f9;
+height: 140px; /* FIXED HEIGHT */
+border-radius: 18px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 15px;
+font-weight: bold;
+box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+transition: 0.2s;
+}
+
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.card-link{
+text-decoration:none;
+color:inherit;
+display:block;
+}
+
+/* ===== Profile Section Layout (Dashboard) ===== */
+
+/* PROFILE BOX */
+/* ===== PROFILE SECTION ===== */
+
+.profile-box {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 15px;
+margin-bottom: 20px;
+background: #0f172a;
+border-radius: 10px;
+}
+
+.profile-text {
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+
+.profile-pic {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+object-fit: cover;
+border: 2px solid #38bdf8;
+}
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle {
+width: 100%;
+padding: 10px;
+margin: 15px 0;
+background: #38bdf8;
+border: none;
+color: black;
+font-weight: bold;
+cursor: pointer;
+border-radius: 6px;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+background: #020617;
+color: #e5e7eb;
+}
+
+body.dark .sidebar {
+background: #020617;
+}
+
+body.dark .card {
+background: #020617;
+color: white;
+}
+
+body.dark .profile-box {
+background: #020617;
+}
+
+body.dark .theme-toggle {
+background: #facc15;
+color: black;
+}
+
+/* ===== RUNNING NOTIFICATIONS ===== */
+.notification-bar {
+position: fixed;
+bottom: 0;
+left: 250px; /* sidebar width */
+width: calc(100% - 250px);
+background: #1e40af;
+color: white;
+padding: 10px;
+font-size: 14px;
+z-index: 999;
+}
+
+body.dark .notification-bar {
+background: #020617;
+color: #facc15;
+}
+
+/* ===== EDIT PROFILE ===== */
+.edit-profile-container {
+max-width: 400px;
+margin: 60px auto;
+background: var(--card-bg);
+padding: 25px;
+border-radius: 12px;
+}
+
+.edit-profile-container h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+.edit-profile-container label {
+display: block;
+margin-top: 12px;
+}
+
+.edit-profile-container input {
+width: 100%;
+padding: 8px;
+margin-top: 5px;
+}
+
+.edit-profile-container button {
+margin-top: 20px;
+width: 100%;
+padding: 10px;
+background: #2563eb;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+}
+/* ===== ACADEMICS ===== */
+
+.academic-table{
+width:100%;
+border-collapse: collapse;
+margin-top:20px;
+border: 2px solid #000; /* outer border darker */
+}
+
+.academic-table th,
+.academic-table td{
+border: 1.5px solid #000;
+padding:12px;
+text-align:center;
+}
+
+.academic-table th{
+background:#6b8df4;
+color:white;
+}
+
+/*--------ADD STUDENT ADMIN----------*/
+
+body {
+margin: 0;
+font-family: Arial;
+}
+
+/* ===== STUDENT DASHBOARD ONLY ===== */
+
+.student-dashboard .sidebar {
+width: 250px;
+height: 100vh;
+position: fixed;
+background: #5981c1;
+color: white;
+padding: 20px;
+}
+
+.student-dashboard .main-content {
+margin-left: 270px;
+padding: 30px;
+}
+
+/* GRID LIKE YOUR ORIGINAL */
+.student-dashboard .cards {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 25px;
+margin-top: 30px;
+}
+
+/* CARDS */
+.student-dashboard .card {
+background: #fcfcfd;
+height: 140px;
+border-radius: 18px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 15px;
+font-weight: bold;
+box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+transition: 0.2s;
+}
+
+.student-dashboard .card:hover {
+transform: translateY(-5px);
+}
+/* Form box */
+.form-box {
+background: white;
+padding: 30px;
+border-radius: 10px;
+width: 350px;
+box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+.form-box input {
+width: 100%;
+padding: 8px;
+margin-bottom: 15px;
+}
+
+.form-box button {
+width: 100%;
+padding: 10px;
+background: #2c3e50;
+color: white;
+border: none;
+}
+
+/* ===== SCROLLING NOTIFICATION (FIXED) ===== */
+
+.notification-bar {
+position: fixed;
+bottom: 0;
+left: 290px; /* matches sidebar */
+width: calc(100% - 200px);
+background: #415ebb;
+color: white;
+overflow: hidden;
+height: 30px;
+display: flex;
+align-items: center;
+}
+
+/* scrolling animation */
+.scroll-text {
+white-space: nowrap;
+display: inline-block;
+padding-left: 100%;
+animation: scroll-left 15s linear infinite;
+}
+
+/* animation keyframes */
+@keyframes scroll-left {
+0% {
+transform: translateX(0%);
+}
+100% {
+transform: translateX(-100%);
+}
+}
+
+/* ===== ADMIN FACULTY PAGE ===== */
+
+.admin-faculty {
+background: #f4f6f9;
+font-family: Arial, sans-serif;
+}
+
+/* Container */
+.admin-faculty .faculty-container {
+margin-left: 270px;
+padding: 30px;
+}
+
+/* Heading */
+.admin-faculty h2 {
+margin-bottom: 20px;
+}
+
+/* Top bar */
+.admin-faculty .top-bar {
+display: flex;
+justify-content: space-between;
+margin-bottom: 15px;
+}
+
+/* Buttons */
+.admin-faculty .add-btn {
+background: #22c55e;
+color: white;
+border: none;
+padding: 10px 15px;
+border-radius: 8px;
+cursor: pointer;
+}
+
+.admin-faculty .search-toggle {
+background: #3b82f6;
+color: white;
+border: none;
+padding: 10px 15px;
+border-radius: 8px;
+cursor: pointer;
+}
+
+/* Search box */
+.admin-faculty .search-box {
+display: none;
+margin-bottom: 15px;
+}
+
+.admin-faculty .search-box input {
+padding: 8px;
+width: 250px;
+}
+
+/* Table */
+.admin-faculty table {
+width: 100%;
+border-collapse: collapse;
+background: white;
+border-radius: 10px;
+overflow: hidden;
+}
+
+/* Table header */
+.admin-faculty th {
+background: #1e40af;
+color: white;
+padding: 12px;
+}
+
+/* Table cells */
+.admin-faculty td {
+padding: 10px;
+text-align: center;
+border-bottom: 1px solid #ddd;
+}
+
+/* Row hover */
+.admin-faculty tr:hover {
+background: #f1f5f9;
+}
+
+/* Action buttons */
+.admin-faculty .edit-btn {
+background: #facc15;
+padding: 5px 10px;
+border-radius: 5px;
+text-decoration: none;
+color: black;
+}
+
+.admin-faculty .delete-btn {
+background: #ef4444;
+padding: 5px 10px;
+border-radius: 5px;
+text-decoration: none;
+color: white;
+}
+
+.sidebar {
+width: 230px;
+height: 100vh;
+background: #44506f;
+color: white;
+position: fixed;
+padding: 20px;
+}
+
+.sidebar ul {
+list-style: none;
+padding: 0;
+}
+
+.sidebar ul li {
+margin: 15px 0;
+}
+
+.sidebar ul li a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+}
+
+/* Main content */
+.main-content {
+margin-left: 250px;
+padding: 30px;
+}
+
+/* Top buttons */
+.top-actions {
+margin-bottom: 15px;
+}
+
+/* Add button */
+.add-btn {
+background: #22c55e;
+color: white;
+padding: 10px 15px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+}
+
+/* Search button */
+.search-btn {
+background: #3b82f6;
+color: white;
+padding: 8px 12px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+}
+
+/* Table */
+.styled-table {
+width: 100%;
+border-collapse: collapse;
+background: white;
+}
+
+.styled-table th {
+background: #334155;
+color: white;
+padding: 12px;
+}
+
+.styled-table td {
+padding: 10px;
+border-bottom: 1px solid #ddd;
+}
+
+/* Buttons */
+.edit-btn {
+background: green;
+color: white;
+padding: 5px 10px;
+border-radius: 5px;
+text-decoration: none;
+}
+
+.delete-btn {
+background: #ef4444;
+color: white;
+padding: 5px 10px;
+border-radius: 5px;
+text-decoration: none;
+}
+
+/* Form Container */
+.form-container {
+width: 40%;
+margin: 30px auto;
+background: white;
+padding: 25px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Inputs */
+.form-container input {
+width: 100%;
+padding: 05px;
+margin: 10px 0;
+border-radius: 6px;
+border: 1px solid #ccc;
+}
+
+/* Buttons */
+.add-btn {
+background-color: #28a745;
+color: white;
+padding: 10px 15px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+}
+
+.edit-btn {
+background-color: #007bff;
+color: white;
+padding: 10px 15px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+}
+
+/* Hover */
+.add-btn:hover {
+background-color: #218838;
+}
+
+.edit-btn:hover {
+background-color: #0056b3;
+}
+
+.form-box {
+width: 50%;
+margin: 30px auto;
+background: white;
+padding: 25px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.input-group {
+margin-bottom: 15px;
+}
+
+.input-group label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+.input-group input {
+width: 100%;
+padding: 10px;
+border-radius: 6px;
+border: 1px solid #ccc;
+}
+
+/* ===== FIX DOUBLE BACKGROUND ISSUE ===== */
+
+html, body {
+    height: auto !important;
+    background: #f4f6f8 !important;
+}
+
+.main-content {
+    min-height: 100vh;
+    background: #f4f6f8 !important;
+}
+
+/* Hide search box by default */
+.search-box {
+    display: none;
+    margin-top: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-form-container {
+    margin-left: 260px;
+    padding: 30px;
+}
+
+.admin-form-box {
+    width: 420px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.admin-form-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-form-box label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.admin-form-box input,
+.admin-form-box textarea,
+.admin-form-box select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.admin-form-box button {
+    width: 100%;
+    padding: 12px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.admin-form-box button:hover {
+    background: #1f2d3a;
+}

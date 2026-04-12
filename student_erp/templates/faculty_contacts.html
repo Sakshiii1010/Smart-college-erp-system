@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Contacts</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    width:800px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+}
+
+h2{
+    text-align:center;
+}
+
+/* SECTION */
+.section{
+    margin-top:20px;
+    padding:15px;
+    background:#f9f9f9;
+    border-left:5px solid #007bff;
+}
+
+/* FORM */
+textarea{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+}
+
+button{
+    margin-top:10px;
+    padding:10px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📞 Contacts</h2>
+
+<!-- ADMIN -->
+<div class="section">
+    <h3>👨‍💼 Admin</h3>
+    <p>Name: Admin</p>
+    <p>Email: admin@erp.com</p>
+    <p>Phone: 9876543210</p>
+</div>
+
+<!-- DEPARTMENT -->
+<div class="section">
+    <h3>🏢 Department Office</h3>
+    <p>Email: cse@university.com</p>
+    <p>Phone: 0123456789</p>
+</div>
+
+<!-- SUPPORT -->
+<div class="section">
+    <h3>🆘 Support</h3>
+    <p>Email: support@erp.com</p>
+    <p>Phone: 9999999999</p>
+</div>
+
+<!-- MESSAGE FORM -->
+<div class="section">
+    <h3>✉️ Send Message</h3>
+
+    <form method="POST">
+        <textarea name="message" placeholder="Write your message..." required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+</div>
+
+</body>
+
+</html>

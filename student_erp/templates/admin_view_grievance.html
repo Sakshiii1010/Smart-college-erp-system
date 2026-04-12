@@ -1,0 +1,107 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+
+<style>
+/* MAIN LAYOUT */
+.main-content {
+    padding: 20px;
+    display: flex;
+    justify-content: left;
+}
+
+/* CARD */
+.card {
+    width: 100%;
+    max-width: 700px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* HEADING */
+.card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* INFO BOX */
+.box {
+    background: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* FORM */
+textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* BUTTON */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* STATUS */
+.status {
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.Pending { background: orange; }
+.Resolved { background: green; }
+.Rejected { background: red; }
+
+</style>
+
+<div class="main-content">
+
+    <div class="card">
+
+        <h2>Grievance Details</h2>
+
+        <p><strong>Subject:</strong></p>
+        <div class="box">{{ grievance.subject }}</div>
+
+        <p><strong>Description:</strong></p>
+        <div class="box">{{ grievance.description }}</div>
+
+        <p><strong>Status:</strong></p>
+        <span class="status {{ grievance.status }}">
+            {{ grievance.status }}
+        </span>
+
+        <form method="POST">
+
+            <p><strong>Reply:</strong></p>
+            <textarea name="reply">{{ grievance.admin_reply }}</textarea>
+
+            <p><strong>Status:</strong></p>
+            <select name="status">
+                <option value="Pending" {% if grievance.status == "Pending" %}selected{% endif %}>Pending</option>
+                <option value="Resolved" {% if grievance.status == "Resolved" %}selected{% endif %}>Resolved</option>
+                <option value="Rejected" {% if grievance.status == "Rejected" %}selected{% endif %}>Rejected</option>
+            </select>
+
+            <button type="submit" class="btn">Update</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

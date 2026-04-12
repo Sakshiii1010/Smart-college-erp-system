@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faculty Management</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin</h2>
+    <ul>
+        <li><a href="/admin/dashboard">🏠 Dashboard</a></li>
+        <li><a href="/admin/students">🧑‍🎓 Students</a></li>
+        <li><a href="/admin/faculty">👩‍🏫 Faculty</a></li>
+        <li><a href="/logout">🚪 Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+
+    <h1>Manage Faculty</h1>
+
+    <div class="top-actions">
+        <a href="/admin/add_faculty">
+            <button class="add-btn">➕ Add Faculty</button>
+        </a>
+
+        <button class="search-btn" onclick="toggleSearch()">🔍 Search</button>
+    </div>
+
+    <div id="searchBox" class="search-box">
+        <form method="GET">
+            <input type="text" name="search" placeholder="Search faculty..." value="{{ search }}">
+            <button type="submit" class="search-btn">Search</button>
+        </form>
+    </div>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Faculty ID</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for f in faculty %}
+            <tr>
+                <td>{{ f['id'] }}</td>
+                <td>{{ f['name'] }}</td>
+                <td>{{ f['faculty_id'] }}</td>
+                <td>{{ f['department'] }}</td>
+                <td>{{ f['designation'] }}</td>
+                <td>
+                    <a href="/admin/edit_faculty/{{ f['id'] }}" class="edit-btn">Edit</a>
+                    <a href="/admin/delete_faculty/{{ f['id'] }}" class="delete-btn">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+function toggleSearch() {
+    var box = document.getElementById("searchBox");
+    box.style.display = (box.style.display === "block") ? "none" : "block";
+}
+</script>
+
+</body>
+</html>

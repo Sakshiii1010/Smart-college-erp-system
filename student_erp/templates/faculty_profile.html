@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Faculty Profile</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    width:700px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+}
+
+.profile{
+    text-align:center;
+}
+
+.profile img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    margin-bottom:10px;
+}
+
+.info{
+    margin-top:20px;
+}
+
+.info p{
+    font-size:16px;
+    margin:5px 0;
+}
+
+form{
+    margin-top:25px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+button{
+    background:#007bff;
+    color:white;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 style="text-align:center;">👤 Faculty Profile</h2>
+
+<!-- PROFILE DISPLAY -->
+<div class="profile">
+
+<img src="{{ url_for('static', filename='images/faculty.jpg') }}" alt="Profile">
+
+<h3>{{ faculty.name }}</h3>
+<p>ID: {{ faculty.faculty_id }}</p>
+
+</div>
+
+<div class="info">
+<p><b>Department:</b> {{ faculty.department }}</p>
+<p><b>Designation:</b> {{ faculty.designation }}</p>
+<p><b>Email:</b> {{ faculty.email }}</p>
+<p><b>Phone:</b> {{ faculty.phone }}</p>
+</div>
+
+<hr>
+
+<!-- EDIT FORM -->
+<h3>Edit Profile</h3>
+
+<form method="POST">
+
+<input type="text" name="name" value="{{ faculty.name }}" required>
+
+<input type="text" name="phone" value="{{ faculty.phone }}" required>
+
+<button type="submit">Update Profile</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

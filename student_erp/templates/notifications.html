@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notifications</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        .container {
+            width: 800px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .card {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .unread {
+            border-left: 5px solid red;
+            background: #fff5f5;
+        }
+
+        .category {
+            font-size: 13px;
+            color: #007bff;
+        }
+
+        .date {
+            font-size: 12px;
+            color: gray;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Notifications</h2>
+
+    {% for n in notifications %}
+        <a href="{{ url_for('mark_notification_read', notif_id=n.id) }}">
+            <div class="card {% if n.is_read == 0 %}unread{% endif %}">
+                <div class="category">[{{ n.category }}]</div>
+                <h4>{{ n.title }}</h4>
+                <p>{{ n.message }}</p>
+                <div class="date">{{ n.created_at }}</div>
+            </div>
+        </a>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

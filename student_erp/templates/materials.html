@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Materials</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:20px;
+}
+
+.container{
+width:900px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#007bff;
+color:white;
+}
+
+select{
+padding:5px;
+}
+
+button{
+background:#28a745;
+color:white;
+border:none;
+padding:6px 10px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#218838;
+}
+
+</style>
+
+<script>
+
+function downloadMaterial(row,pdf,ppt){
+
+var type=document.getElementById("type_"+row).value;
+
+if(type=="pdf"){
+window.location="/static/materials/"+pdf;
+}
+
+else if(type=="ppt"){
+window.location="/static/materials/"+ppt;
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Materials</h2>
+
+<table>
+
+<tr>
+<th>Subject</th>
+<th>Title</th>
+<th>Type</th>
+<th>Uploaded By</th>
+<th>Download</th>
+</tr>
+
+{% for material in materials %}
+
+<tr>
+
+<td>{{ material.subject }}</td>
+
+<td>{{ material.title }}</td>
+
+<td>
+
+<select id="type_{{ material.id }}">
+<option value="pdf">PDF</option>
+<option value="ppt">PPT</option>
+</select>
+
+</td>
+
+<td>{{ material.uploaded_by }}</td>
+
+<td>
+
+<button onclick="downloadMaterial('{{ material.id }}','{{ material.pdf_file }}','{{ material.ppt_file }}')">
+Download
+</button>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

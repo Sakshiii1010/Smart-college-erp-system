@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Faculty</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>Admin</h2>
+    <ul>
+        <li><a href="/admin/dashboard">🏠 Dashboard</a></li>
+        <li><a href="/admin/students">🧑‍🎓 Students</a></li>
+        <li><a href="/admin/faculty">👩‍🏫 Faculty</a></li>
+        <li><a href="/logout">🚪 Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="form-box">
+
+        <h2>Edit Faculty</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" value="{{ faculty['name'] }}" required>
+            <input type="text" name="faculty_id" value="{{ faculty['faculty_id'] }}" required>
+            <input type="text" name="department" value="{{ faculty['department'] }}" required>
+            <input type="text" name="designation" value="{{ faculty['designation'] }}" required>
+            <input type="email" name="email" value="{{ faculty['email'] }}">
+            <input type="text" name="phone" value="{{ faculty['phone'] }}">
+
+            <button type="submit">Update Faculty</button>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

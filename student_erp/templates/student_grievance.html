@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grievance Portal</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        .container {
+            width: 900px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        .Pending {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .Resolved {
+            color: green;
+            font-weight: bold;
+        }
+
+        .Rejected {
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Student Grievance Portal</h2>
+
+    <h3>Submit New Grievance</h3>
+
+    <form method="POST">
+        <label>Category</label>
+        <select name="category" required>
+            <option value="Academic">Academic</option>
+            <option value="Examination">Examination</option>
+            <option value="Fees">Fees</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Description</label>
+        <textarea name="description" rows="4" required></textarea>
+
+        <button type="submit">Submit Grievance</button>
+    </form>
+
+    <h3>My Grievances</h3>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Admin Reply</th>
+        </tr>
+
+        {% for g in grievances %}
+        <tr>
+            <td>{{ g.id }}</td>
+            <td>{{ g.category }}</td>
+            <td>{{ g.description }}</td>
+            <td>{{ g.date }}</td>
+            <td class="{{ g.status }}">{{ g.status }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="6" style="text-align: center; color: #888;">No grievances found.</td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>

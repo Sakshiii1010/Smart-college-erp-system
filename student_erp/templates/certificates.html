@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Certificates</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:30px;
+}
+
+.container{
+width:900px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{text-align:center;}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+}
+
+button{
+padding:10px 15px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#007bff;
+color:white;
+}
+
+.Pending{color:orange;font-weight:bold;}
+.Approved{color:green;font-weight:bold;}
+.Rejected{color:red;font-weight:bold;}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Apply for Certificate</h2>
+
+<form method="POST">
+
+<label>Certificate Type</label>
+
+<select name="certificate_type" required>
+<option value="">Select</option>
+<option value="Bonafide">Bonafide Certificate</option>
+<option value="Character">Character Certificate</option>
+<option value="Study">Study Certificate</option>
+</select>
+
+<label>Purpose</label>
+
+<input type="text" name="purpose" placeholder="Reason for certificate" required>
+
+<button type="submit">Apply</button>
+
+</form>
+
+<h3>My Applications</h3>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Certificate</th>
+<th>Purpose</th>
+<th>Date</th>
+<th>Status</th>
+<th>Download</th>
+</tr>
+
+{% for app in applications %}
+
+<tr>
+
+<td>{{ app.id }}</td>
+<td>{{ app.certificate_type }}</td>
+<td>{{ app.purpose }}</td>
+<td>{{ app.applied_date }}</td>
+<td class="{{ app.status }}">{{ app.status }}</td>
+
+<td>
+{% if app.status == "Approved" %}
+<a href="{{ url_for('download_certificate', app_id=app.id) }}">
+<button>Download</button>
+</a>
+{% else %}
+Not Available
+{% endif %}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>
